@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+//Feito por: Italo Mazzucatto
+
 // definicao de tipo
 struct NO {
 	int valor;
