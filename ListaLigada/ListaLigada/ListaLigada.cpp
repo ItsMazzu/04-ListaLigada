@@ -30,7 +30,8 @@ int main()
 void menu()
 {
 	int op = 0;
-	while (op != 7) {
+	while (op != 7)
+	{
 		system("cls"); // somente no windows
 		cout << "Menu Lista Ligada";
 		cout << endl << endl;
@@ -145,12 +146,73 @@ void inserirElemento()
 
 void excluirElemento()
 {
+	if (primeiro == NULL)
+	{
+		cout << "Lista vazia." << endl;
+		return;
+	}
+
+	int valor;
+	cout << "Digite o valor do elemento que deseja excluir: \n";
+	cin >> valor;
+
+	NO* anterior = NULL;
+	NO* atual = primeiro;
+
 	
+	while (atual != NULL && atual->valor != valor)
+	{
+		anterior = atual;
+		atual = atual->prox;
+	}
+
+	
+	if (atual == NULL)
+	{
+		cout << "Elemento desconhecido." << endl;
+		return;
+	}
+
+	
+	if (anterior == NULL) 
+	{
+		primeiro = atual->prox;
+	}
+	else
+	{
+		anterior->prox = atual->prox;
+	}
+
+	
+	delete atual;
+
+	cout << "Elemento deletado com sucesso." << endl;
 }
 
 void buscarElemento()
 {
+	NO* aux = primeiro;
+	int valor;
 	
+	cout << "Insira o valor que deseja buscar: \n";
+	cin >> valor;
+	while (primeiro == NULL)
+	{
+		cout << "!LISTA VAZIA!" << endl;
+		return;
+	}
+	NO* encontrado = posicaoElemento(valor);
+
+	if (encontrado != NULL)
+	{
+		cout << "Elemento encontrado: " << encontrado << endl;
+		return;
+	}
+	else
+	{
+		cout << "Elemento desconhecido." << endl;
+		return;
+	}
 }
 
 
